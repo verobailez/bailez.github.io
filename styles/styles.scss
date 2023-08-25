@@ -1,0 +1,774 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+*{
+    font-family: "montserrat, san serif";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    transition: all .2s linear;
+}
+  
+
+//paleta de colores//
+$primary: #e53935;
+$p-light: #ff6f60;
+$p-dark: #e61212;
+
+$secondary: #bdbdbd;
+$s-light: #efefef;
+$s-dark: #8d8d8d;
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-green: #2a3b16;
+
+ //estetica//
+ $box-shadow: 0.5rem 2rem rgba(11, 11, 11, 0.2);
+
+ @mixin grid($val){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 2rem;
+ }
+
+ //Inicio html-body//
+ html{
+    font-size: 65%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding: 7rem;
+
+    &::-webkit-scrollbar{
+        width: 1rem;
+    }
+
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: $primary;
+    }
+ }
+//fin html body//
+
+//Inicio barra de menu//
+.header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: $box-shadow;
+    background: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 9%;
+
+    .logo{
+        font-size: 2rem;
+        color: $color-black;
+        font-weight: 600;
+
+        i{
+            color: $p-dark;
+            margin-right: .5rem;
+        }
+    }
+
+    .navbar a{
+        margin: 0 1.5rem;
+        font-size: 1.5rem;
+        color: $color-black;
+        font-weight: 500;
+
+        &:hover{
+            color: $p-dark;
+        }
+    }
+    //inicio barra de busqueda//
+    .search-form{
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 6rem;
+        background: $color-white;
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+        &.active{
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        input{
+            width: 100%;
+            font-size: 1.6rem;
+            color: $p-dark;
+        }
+        label{
+            font-size: 2.5rem;
+            margin-left: 2rem;
+            color: $color-black;
+
+            &:hover{
+                color: $p-dark;
+            }
+        }
+    }
+    //fin barra de busqueda//
+    .icons div,
+    .icons a{
+        height: 4.5rem;
+        width: 4.5rem;
+        line-height: 4.5rem;
+        border-radius: .5rem;
+        background:  $s-light;
+        font-size: 2rem;
+        color: $color-black;
+        margin-left: .3rem;
+        text-align: center;
+
+        &:hover{
+            background: $p-dark;
+            color: $color-white;
+        }
+    }
+
+    #menu-btn{
+        display: none;
+    }
+}
+//fin barra de menu//
+
+//inicio del Home//
+section{
+    padding: 3rem 9%;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    background: $p-dark;
+    color: $color-white;
+    font-size: 1.5rem;
+    box-shadow: $box-shadow;
+    text-align: center;
+
+    &:hover{
+        background: $color-green;
+    }
+}
+
+.heading{
+    text-align: center;
+    color: $color-green;
+    margin-bottom: 3rem;
+    font-size: 4rem;
+}
+
+.home{
+    position: relative;
+    padding: 0;
+
+    .bannerone{
+        background: url(../assets/logobanner1.webp)no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .slide{
+        padding: 2rem;
+        display: flex;
+        min-height: 60vh;
+
+        display: none;
+
+        &.active{
+            display: flex;
+        }
+
+        .content{
+            margin: auto;
+            text-align: center;
+        }
+
+        span{
+            color: $color-white;
+            display: block;
+            font-size: 7rem;
+            text-shadow: $box-shadow;
+            animation: fadeIn .2s linear backwards;
+        }
+        h3{
+            font-size: 6rem;
+            color: $p-dark; 
+            text-shadow: $box-shadow;
+            animation: fadeIn .2s linear backwards .4s;
+        }
+
+        .btn{
+            animation: fadeIn .2s linear backwards .6s;
+        }
+    }
+
+    @keyframes fadeIn{
+        0%{
+            opacity: 0;
+            transform: translateY(-4rem) scale(.4);
+        }
+    }
+
+    #next-slide,
+    #prev-slide{
+        height: 4rem;
+        width: 4rem;
+        line-height: 4rem;
+        font-size: 2rem;
+        color: $color-green;
+        background: $color-white;
+        box-shadow: $box-shadow;
+        cursor: pointer;
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        text-align: center;
+
+        &:hover{
+            background: $p-dark;
+            color: $color-white;
+        }
+    }
+
+    #prev-slide{
+        right: 8rem;
+    }
+}
+//Fin del home//
+
+//Inicio categorias//
+.category{
+    @include grid(20rem);
+
+    .box-container{
+        text-align: center;
+        padding: 3rem;
+
+        &:hover h3{
+            color: $p-dark
+        }
+
+        img{
+            height: 10rem;
+            margin-bottom: 1rem;
+        }
+
+        h3{
+            font-size: 1.5rem;
+            color: $color-green;
+        }
+    }
+}
+//Fin Categorias//
+
+//Inicio Banner//
+.banner{
+    background: url(../assets/sahumerios.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .content{
+        max-width: 40rem;
+        background: $color-white;
+        box-shadow: $box-shadow;
+        padding: 2rem;
+        text-align: center;
+        margin: 10rem;
+
+        span{
+            font-size: 2rem;
+            font-weight: 600;
+            color: $p-dark;
+        }
+
+        h3{
+            font-size: 2.5rem;
+            margin: 1rem;
+            color: $color-green;
+        }
+
+        p{
+            font-size: 1.5rem;
+            margin: 1rem;
+            line-height: 1.5;
+        }
+    }
+}
+//Fin Banner//
+//Inicio Blog//
+.blog{
+    .box-container{
+        @include grid(30rem);
+
+        .box{
+            box-shadow: $box-shadow;
+
+            &:hover .image img{
+                transform: scale(1.1);
+            }
+
+            .image{
+                height: 25rem;
+                width: 100%;
+                overflow: hidden;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .content{
+                padding: 2rem;
+                position: relative;
+
+                .date{
+                    position: absolute;
+                    top: -6rem;
+                    right: 3rem;
+                    height: 11rem;
+                    width: 11rem;
+                    border: .5rem solid $color-white;
+                    border-radius: 50%;
+                    background-color: $color-green;
+                    text-align: center;
+                    padding-top: 2.5rem;
+
+                    h3{
+                        font-size: 3rem;
+                        line-height: 1;
+                        color: $color-white;
+                    }
+
+                    span{
+                        font-size: 1.5rem;
+                        color: $color-white;
+                    }
+                }
+
+                .user{
+                    display: block;
+                    padding-bottom: 1rem;
+                    font-size: 1.5rem;
+                    color: $s-dark;
+
+                    i{
+                        padding-right: .5rem;
+                    }
+
+                    &:hover{
+                        color: $color-green;
+                    }
+                }
+
+                .title{
+                    font-size: 2rem;
+                    color: $color-green;
+                    font-weight: 600;
+
+                    &:hover{
+                        color: $p-dark;
+                    }
+                }
+
+                p{
+                    padding: 1rem 0;
+                    font-size: 1.5rem;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}                
+//Fin Blog//
+
+//Inicio Servicios//
+.services{
+    @include grid(30rem);
+    background: $s-light;
+
+    .box{
+        text-align: center;
+        padding: 2rem;
+    }
+
+    img{
+        height: 10rem;
+    }
+
+    h3{
+        padding-top: 1rem o;
+        padding-bottom: .5rem;
+        font-size: 2rem;
+        color: $color-green;
+    }
+
+    p{
+        line-height: 1.5;
+        font-size: 1.5rem;
+    }
+}
+//Fin Servicios//
+
+
+//Inicio Nosotras//
+.about{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .image{
+        flex: 1 1 42rem;
+        padding-bottom: 5rem;
+        padding-right: 5rem;
+
+        img{
+            width: 100%;
+            box-shadow: 4rem 4rem $s-light
+        }
+    }
+
+    .content{
+        flex: 1 1 42rem;
+
+        .box{
+            padding: 3rem;
+            background: $s-light;
+
+            h3{
+                font-size: 3rem;
+                color: $s-dark;
+            }
+
+            p{
+                padding:1rem 0;
+                line-height: 2rem;
+                color: $color-black;
+                font-size: 1.5rem;
+            }
+        }
+        .icons-container{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            margin-top: 2rem;
+
+            .icons{
+                flex: 1 1 1.6rem;
+                background: $s-light;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            i{
+                color: $p-dark;
+                margin-bottom: 1rem;
+                font-size: 4rem;
+
+                &:hover{
+                    color: $color-green;
+                }
+            }
+
+            p{
+                font-size: 1.5rem;
+                color: $color-green;
+            }
+        }
+    }
+}
+
+//FIn Nosotras//
+
+//Inicio Tienda//
+.shop{
+    background: $s-light;
+
+    .box-container{
+        @include grid(25rem);
+
+        .box{
+            text-align: center;
+            background: $color-white;
+            box-shadow: $box-shadow;
+
+            .image{
+                position: relative;
+                overflow: hidden;
+
+                img{
+                    height: 15rem;
+                
+                    &:hover{
+                    transform: scale(1.1);
+                    }
+                }
+            
+
+                .icons{
+                    position: relative;
+                    top: 1rem;
+                    left: 1rem;
+
+                    a{
+                        display: block;
+                        height: 4rem;
+                        width: 4rem;
+                        line-height: 4rem;
+                        font-size: 1.5rem;
+                        color: $color-green;
+                        box-shadow: $box-shadow;
+
+                        &:hover{
+                            color: $s-dark;
+                        }
+                    }
+                }    
+            }
+        
+
+            .content{
+                padding: 2rem;
+
+                h3{
+                    font-size: 1.5rem;
+                }
+
+                .price{
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                    color: $color-green;
+
+                    span{
+                        color: $p-dark;
+                        font-weight: 400;
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }       
+    }
+}
+//Fin Tienda//
+
+//Inicio Contacto//
+.bannerone{
+    background: url(../assets/logo.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.contact{
+    background-color: #8d8d8d;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2rem 2rem;
+
+    form{
+        margin: 2rem auto;
+        background-color: $color-white;
+        text-align: center;
+        max-width: 40rem;
+        box-shadow: $box-shadow;
+
+        h3{
+            font-size: 3rem;
+            color: $color-green;
+        }
+
+        .box{
+            width: 100%;
+            padding: 1.5rem;
+            margin: 1rem;
+            font-size: 1.5rem;
+            color: $s-dark;
+        }
+
+        textarea{
+            height: 15rem;
+            resize: none;
+        }
+    }
+}
+//Fin Contacto//
+
+//Inicio Footer//
+.footer{
+    .box-container{
+        @include grid(25rem);
+
+        .box{
+            font-size: 2rem;
+            color: $color-green;
+            padding: 1rem 0;
+
+            .link{
+                padding: 1rem 0;
+                font-size: 1.5rem;
+                color: $color-black;
+                display: block;
+
+                i{
+                    padding-right: .5rem;
+                    color: $p-dark;
+                }
+
+                &:hover{
+                    color: $p-dark;
+
+                    i{
+                        padding-right: 2rem;
+                    }
+                }
+            }
+
+            .share{
+                margin-top: 2rem;
+
+                a{
+                    height: 4rem;
+                    width: 4rem;
+                    line-height: 4rem;
+                    font-size: 2.5rem;
+                    border-radius: .5rem;
+                    text-align: center;
+                    background: $p-dark;
+                    color: $color-white;
+
+                    &:hover{
+                        background: $color-green;
+                    }
+                }
+            }
+        }
+    }
+}
+//Fin Footer//
+
+//Creditos//
+.creditos{
+    background: $s-light;
+    line-height: 1.5;
+    text-align: center;
+    padding: 4rem;
+    font-size: 2rem;
+    color: $color-black;
+    margin: 0;
+
+    a{
+        font-size: 4rem;
+        text-align: center;
+        justify-content: center;
+        color: $p-dark;
+
+        &:hover{
+            transform: scale(1.5);
+        }
+    }
+
+    p{
+        font-size: 2rem;
+
+        span{
+            color: $p-dark;
+            font-weight: 600;
+        }
+    }
+}
+//Creditos//
+
+//Inicio Media Queries//
+@media (max-width:1000px){
+
+    html{
+        font-size: 55%;
+    }
+
+    .header{
+        padding: 1rem 1.5rem;
+    }
+
+    .section{
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width:845px){
+
+    .header{
+        #menu-btn{
+            display: inline-block;
+        }
+
+        
+
+        .navbar{
+            position: absolute;
+            top: 99%;
+            left: 0;
+            right: 0;
+            background: $color-white;
+
+            padding: 0 2rem;
+
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+            &.active{
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            a{
+                display: block;
+                margin: 1.5rem;
+            }
+        }
+    }
+}
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+    .home .slide .content{
+        h3{
+            font-size: 3rem;
+        }
+        span{
+            font-size: 2.5rem;
+        }
+    }
+}
+
+
+.banner .content{
+    margin: 3rem;
+}
+//Fin Media Queries//
+
+
+
+
+
+
+
+
