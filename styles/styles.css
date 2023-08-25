@@ -135,17 +135,7 @@ section {
   padding: 0;
 }
 .home .bannerone {
-  background: url(/assets/logobanner1.webp) no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.home .bannertwo {
-  background: url(/assets/logo-velas.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.home .bannerthree {
-  background: url(/assets/fragancias4.webp) no-repeat;
+  background: url(../assets/logobanner1.webp) no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -230,7 +220,7 @@ section {
 }
 
 .banner {
-  background: url(/assets/sahumerios.jpg) no-repeat;
+  background: url(../assets/sahumerios.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
